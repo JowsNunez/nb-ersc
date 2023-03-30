@@ -1,0 +1,16 @@
+
+/** template created by jowsnunez --> https://www.github.com/JowsNunez **/
+package ${package}.Repository;
+
+import ${package}.Entity.${entityName};
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+/**
+ *
+ * @author ${author}
+ */
+@Repository
+public interface I${entityName}Repository extends JpaRepository<${entityName}, ${ID}> {
+    
+}

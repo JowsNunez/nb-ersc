@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Install: io/github/jowsnunez/Actions/Installer.class
+OpenIDE-Module-Localizing-Bundle: io/github/jowsnunez/Bundle.properties
+OpenIDE-Module-Name: Nb-ERSC
