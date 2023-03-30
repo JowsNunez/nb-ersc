@@ -3,21 +3,51 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.JowsNunez</groupId>
     <artifactId>NBERSC</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>nbm</packaging>
+    <name>nb-ersc</name>
+    <version>0.0.1</version>
+    <description>Custom message logs colors in console</description>
     <url>https://github.com/JowsNunez/nb-ersc</url>
+    <packaging>nbm</packaging>
+    
     <developers>
         <developer>
             <name>Jose Alfredo N.A</name>
             <email>alfredgua43@gmail.com</email>
+            <url>https://portfoliov2.jandev.live/</url>
         </developer>
     </developers>
+    <licenses>
+        <license>
+            <name>GNU GPL 2.0</name>
+            <url>https://www.gnu.org/licenses/old-licenses/gpl-2.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
     <build>
+       
         <plugins>
+           
+            
+           
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.netbeans.utilities</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
-                <version>4.8</version>
+                <version>4.3</version>
                 <extensions>true</extensions>
             </plugin>
             
@@ -40,6 +70,20 @@
                     </archive>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
        
     </build>
@@ -54,29 +98,14 @@
             </releases>
         </repository>
     </repositories>
-    <licenses>
-        <license>
-            <name>APACHE LICENSE, VERSION 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-        </license>
-    </licenses>
-    
+   
+  
     <scm>
-        <connection>scm:git:git://github.com/JowsNunez/MessageColor</connection>
-        <developerConnection>scm:git:ssh://github.com/JowsNunez/MessageColor.git</developerConnection>
+        <connection>scm:git:git://github.com/JowsNunez/nb-ersc</connection>
+        <developerConnection>scm:git:ssh://github.com/JowsNunez/nb-ersc.git</developerConnection>
         <url>http://github.com/JowsNunez/nb-ersc/tree/main</url>
     </scm>
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-    
+     
     <dependencies>
         <dependency>
             <groupId>org.netbeans.api</groupId>
