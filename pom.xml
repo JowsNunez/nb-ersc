@@ -5,6 +5,7 @@
     <artifactId>NBERSC</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>nbm</packaging>
+    <url>https://github.com/JowsNunez/nb-ersc</url>
     <developers>
         <developer>
             <name>Jose Alfredo N.A</name>
@@ -109,7 +110,7 @@
     <scm>
         <connection>scm:git:git://github.com/JowsNunez/MessageColor</connection>
         <developerConnection>scm:git:ssh://github.com/JowsNunez/MessageColor.git</developerConnection>
-        <url>http://github.com/JowsNunez/MessageColor/tree/main</url>
+        <url>http://github.com/JowsNunez/nb-ersc/tree/main</url>
     </scm>
     <distributionManagement>
         <snapshotRepository>
