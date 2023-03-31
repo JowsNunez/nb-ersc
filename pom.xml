@@ -4,8 +4,8 @@
     <groupId>io.github.JowsNunez</groupId>
     <artifactId>NBERSC</artifactId>
     <name>nb-ersc</name>
-    <version>0.0.2</version>
-    <description>Custom message logs colors in console</description>
+    <version>1.0.0</version>
+    <description>Create Repository, Service and Controller of Entity to SpringBoot</description>
     <url>https://github.com/JowsNunez/nb-ersc</url>
     <packaging>nbm</packaging>
     
@@ -18,8 +18,8 @@
     </developers>
     <licenses>
         <license>
-            <name>GNU GPL 2.0</name>
-            <url>https://www.gnu.org/licenses/old-licenses/gpl-2.0.html</url>
+            <name>GNU GPL 3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -37,6 +37,16 @@
        
         <plugins>
            
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>nbm-maven-plugin</artifactId>
+                <version>4.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <license>${project.basedir}/LICENSE.txt</license>
+                </configuration>
+            </plugin>
+    
             
            
             <plugin>

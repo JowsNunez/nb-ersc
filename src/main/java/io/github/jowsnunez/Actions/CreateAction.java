@@ -16,6 +16,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.openide.loaders.DataObject;
 import org.openide.util.Exceptions;
 
@@ -25,6 +27,7 @@ import org.openide.util.Exceptions;
  */
 public class CreateAction implements ActionListener {
 
+    private static final Logger LOGGER = Logger.getLogger("io.github.jowsnunez.CreateAction");
     private final DataObject context;
     private String ctxPath[];
     private FileManager fileManager;

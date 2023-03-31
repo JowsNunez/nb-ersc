@@ -14,32 +14,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ *
+ * @author ${author}
+ * 
+ */
 @RestController
 @RequestMapping("${entityNameLower}")
 public class ${entityName}RestController {
 
     @Autowired
-    private I${entityName}Service _I${entityNameLower}Service;
+    private I${entityName}Service<${entityName}> _${entityName}Service;
 
     @GetMapping("/")
-    Iterable<${entityName}> getAll() {
-        return _I${entityNameLower}Service.getAll();
+    public Iterable<${entityName}> getAll() {
+        return _${entityName}Service.getAll();
     }
 
     @PostMapping("/")
     public ${entityName} create(@RequestBody ${entityName} new${entityName}) {
-        return _I${entityNameLower}Service.create(new${entityName});
+        return _${entityName}Service.create(new${entityName});
     }
 
     @GetMapping("/{id}")
     public ${entityName} getById(@PathVariable ${ID} id) {
-        return _I${entityNameLower}Service.getById(id);
+        return _${entityName}Service.getById(id);
     }
 
     @DeleteMapping("/{id}")
-    void delete${entityName}(@PathVariable ${ID} id) {
-        _I${entityNameLower}Service.delete(id);
+    public void delete(@PathVariable ${ID} id) {
+        _${entityName}Service.delete(id);
     }
 }
