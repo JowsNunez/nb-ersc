@@ -1,11 +1,14 @@
 package io.github.jowsnunez.Files;
 
 import io.github.jowsnunez.util.Extractor;
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import org.openide.util.Exceptions;
 
 /**
@@ -18,18 +21,21 @@ public class FileManager {
     private boolean isFoundAuthor;
     private boolean isFoundClass;
     private boolean isFoundPackage;
+    private List<AbstractWriter> writers;
     private String className;
     private String authorName;
     private String idObjectType;
     private String idObjectName;
     private String packageName;
+    private Extractor extractor;
 
     public FileManager() {
-
+        this.writers = new ArrayList<>();
         this.isFoundAuthor = false;
         this.isFoundClass = false;
         this.isFoundId = false;
         this.isFoundPackage = false;
+        this.extractor = new Extractor();
 
     }
 
@@ -68,19 +74,22 @@ public class FileManager {
     }
 
     public String[] findIdAttrName(String doc) {
-        Extractor extractor = new Extractor();
+
         return extractor.extractObjAttName(doc);
     }
+
     public String findAuthorName(String doc) {
-        Extractor extractor = new Extractor();
+
         return extractor.extractObjhAuthorName(doc);
     }
+
     public String[] findPackageName(String doc) {
-        Extractor extractor = new Extractor();
+
         return extractor.extractObjPackageName(doc);
     }
-     public String findClassName(String doc) {
-        Extractor extractor = new Extractor();
+
+    public String findClassName(String doc) {
+
         return extractor.extractObjClassName(doc);
     }
 
@@ -155,6 +164,63 @@ public class FileManager {
     public void setIsFoundPackage(boolean isFoundPackage) {
         this.isFoundPackage = isFoundPackage;
     }
-    
+
+    public List<AbstractWriter> getWriters() {
+        return writers;
+    }
+
+    public void setWriters(List<AbstractWriter> writers) {
+        this.writers = writers;
+    }
+
+    public void writeAll() {
+        for (AbstractWriter writer : writers) {
+            if (writer != null) {
+                writer.makeTemplate();
+                writer.write();
+            }
+
+        }
+    }
+
+    public void addWriters(AbstractWriter abstractWriter) {
+        abstractWriter.setFileManager(this);
+        this.makePaths(abstractWriter);
+        this.makePaths(abstractWriter);
+        this.writers.add(abstractWriter);
+    }
+
+    private void makePaths(AbstractWriter abstractWriter) {
+        String strFilePath;
+        String strPackagePath;
+
+        if (abstractWriter == null) {
+            return;
+        }
+
+        if (abstractWriter instanceof RepositoryWriter) {
+            strFilePath = "repository/I" + this.getClassName() + "Repository.java";
+            strPackagePath = "repository";
+        } else if (abstractWriter instanceof InterfaceServiceWriter) {
+            strFilePath = "service/I" + this.getClassName() + "Service.java";
+            strPackagePath = "service";
+        } else if (abstractWriter instanceof ControllerWriter) {
+            strFilePath = "controller/I" + this.getClassName() + "Controller.java";
+            strPackagePath = "controller";
+        } else if (abstractWriter instanceof ServiceWriter) {
+            strFilePath = "service/" + this.getClassName() + "Service.java";
+            strPackagePath = "service";
+        } else {
+            return;
+        }
+
+        if (strPackagePath.isBlank() || strFilePath.isBlank()) {
+            return;
+        }
+
+        abstractWriter.setFilePath(Paths.get(abstractWriter.getStrPath()[0], strFilePath));
+        abstractWriter.setPackagePath(Paths.get(abstractWriter.getStrPath()[0], strPackagePath));
+
+    }
 
 }

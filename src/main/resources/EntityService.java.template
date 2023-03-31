@@ -1,0 +1,45 @@
+/** template created by jowsnunez --> https://www.github.com/JowsNunez **/
+
+package ${package}.Service;
+
+
+import ${package}.Entity.${entityName};
+import ${package}.Repository.I${entityName}Repository;
+import java.util.Optional;
+import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+
+/**
+ *
+ * @author ${author}
+ */
+
+@Component
+public class ${entityName}Service implements I${entityName}Service<${entityName}> {
+
+    @Autowired
+    private I${entityName}Repository _${entityNameLower}Repository;
+
+
+    @Override
+    public Iterable<${entityName}> getAll(){
+        return _${entityNameLower}Repository.findAll();
+    }
+
+    @Override
+    public ${entityName} getById(${ID} id){
+        Optional<${entityName}> opt = _${entityNameLower}Repository.findById(id);
+        return opt.get();
+    }
+
+    @Override
+    public ${entityName} create(${entityName} entity){
+        return _${entityNameLower}Repository.save(entity);
+    }
+
+    @Override
+    public void delete(${ID} id){
+         _${entityNameLower}Repository.deleteById(id);
+    }
+
+} 

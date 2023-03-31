@@ -1,0 +1,20 @@
+/** template created by jowsnunez --> https://www.github.com/JowsNunez **/
+
+package ${package}.Service;
+
+import org.springframework.stereotype.Service;
+
+/**
+ *
+ * @author ${author}
+ * @param <T>
+ */
+@Service
+public interface I${entityName}Service<T> {
+    
+    Iterable<T> getAll();
+    T getById(${ID} id);
+    T create(T entity);
+    void delete(${ID} id);
+    
+}

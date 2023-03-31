@@ -26,22 +26,22 @@ import org.openide.util.NbBundle.Messages;
 
 @ActionID(
         category = "Build",
-        id = "io.github.jowsnunez.Actions.CreateRepository"
+        id = "io.github.jowsnunez.Actions.CreateRepository1"
 )
 @ActionRegistration(
-        displayName = "#CTL_CreateRepository"
+        displayName = "#CTL_CreateRepository1"
 )
 
-@ActionReference(path = "Loaders/text/x-java/Actions", position = 910)
-@Messages("CTL_CreateRepository=CreateRepository")
-public final class CreateRepository implements ActionListener {
+@ActionReference(path = "Editors/text/x-java/Popup", position = 100)
+@Messages("CTL_CreateRepository1=CreateRepository")
+public final class CreateRepository1 implements ActionListener {
 
     static final Logger LOGGER = Logger.getLogger("io.github.jowsnunez");
     private final DataObject context;
     private String ctxPath[];
     private FileManager fileManager;
 
-    public CreateRepository(DataObject context) {
+    public CreateRepository1(DataObject context) {
         this.context = context;
         this.fileManager = new FileManager();
     }

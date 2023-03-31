@@ -4,7 +4,7 @@
     <groupId>io.github.JowsNunez</groupId>
     <artifactId>NBERSC</artifactId>
     <name>nb-ersc</name>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <description>Custom message logs colors in console</description>
     <url>https://github.com/JowsNunez/nb-ersc</url>
     <packaging>nbm</packaging>
