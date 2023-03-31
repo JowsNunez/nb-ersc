@@ -4,6 +4,7 @@
  */
 package io.github.jowsnunez.Actions;
 
+import io.github.jowsnunez.Files.ControllerWriter;
 import io.github.jowsnunez.Files.FileManager;
 import io.github.jowsnunez.Files.RepositoryWriter;
 import io.github.jowsnunez.Files.InterfaceServiceWriter;
@@ -53,6 +54,7 @@ public final class CreateRepository1 implements ActionListener {
         this.fileManager.addWriters(new RepositoryWriter(ctxPath));
         this.fileManager.addWriters(new InterfaceServiceWriter(ctxPath));
         this.fileManager.addWriters(new ServiceWriter(ctxPath));
+        this.fileManager.addWriters(new ControllerWriter(ctxPath));
         this.fileManager.writeAll();
 
         // TODO use context

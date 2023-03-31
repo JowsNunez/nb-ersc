@@ -205,7 +205,7 @@ public class FileManager {
             strFilePath = "service/I" + this.getClassName() + "Service.java";
             strPackagePath = "service";
         } else if (abstractWriter instanceof ControllerWriter) {
-            strFilePath = "controller/I" + this.getClassName() + "Controller.java";
+            strFilePath = "controller/" + this.getClassName() + "RestController.java";
             strPackagePath = "controller";
         } else if (abstractWriter instanceof ServiceWriter) {
             strFilePath = "service/" + this.getClassName() + "Service.java";

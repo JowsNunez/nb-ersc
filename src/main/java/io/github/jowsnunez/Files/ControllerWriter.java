@@ -5,7 +5,6 @@
 package io.github.jowsnunez.Files;
 
 import java.io.InputStream;
-import org.openide.loaders.DataObject;
 
 /**
  *
@@ -18,19 +17,15 @@ public class ControllerWriter extends AbstractWriter {
 
     }
 
-    @Override
-    public void write() {
-
+    public ControllerWriter(String[] strPath) {
+        super(strPath);
     }
 
     @Override
     public InputStream getTemplate() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void makeTemplate() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream uri = classLoader.getResourceAsStream("EntityRestController.java.template");
+        return uri;
     }
 
 }

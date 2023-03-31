@@ -1,0 +1,45 @@
+/** template created by jowsnunez --> https://www.github.com/JowsNunez **/
+
+package ${package}.Controller;
+
+import java.util.List;
+
+import ${package}.Service.I${entityName}Service;
+import ${package}.Entity.${entityName};
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@RestController
+@RequestMapping("${entityNameLower}")
+public class ${entityName}RestController {
+
+    @Autowired
+    private I${entityName}Service _I${entityNameLower}Service;
+
+    @GetMapping("/${entityNameLower}")
+    Iterable<${entityName}> getAll() {
+        return _I${entityNameLower}Service.getAll();
+    }
+
+    @PostMapping("/${entityNameLower}")
+    public ${entityName} create(@RequestBody ${entityName} new${entityName}) {
+        return _I${entityNameLower}Service.create(new${entityName});
+    }
+
+    @GetMapping("/{${entityNameLower}}/{id}")
+    public ${entityName} getById(@PathVariable ${ID} id) {
+        return _I${entityNameLower}Service.getById(id);
+    }
+
+    @DeleteMapping("/${entityNameLower}/{id}")
+    void delete${entityName}(@PathVariable ${ID} id) {
+        _I${entityNameLower}Service.delete(id);
+    }
+}
