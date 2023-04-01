@@ -1,11 +1,11 @@
 /** template created by jowsnunez --> https://www.github.com/JowsNunez **/
 
-package ${package}.Controller;
+package ${package}.controller;
 
 import java.util.List;
 
-import ${package}.Service.I${entityName}Service;
-import ${package}.Entity.${entityName};
+import ${package}.service.I${entityName}Service;
+import ${package}.entity.${entityName};
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

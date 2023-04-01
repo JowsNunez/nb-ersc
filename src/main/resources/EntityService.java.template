@@ -1,10 +1,10 @@
 /** template created by jowsnunez --> https://www.github.com/JowsNunez **/
 
-package ${package}.Service;
+package ${package}.service;
 
 
-import ${package}.Entity.${entityName};
-import ${package}.Repository.I${entityName}Repository;
+import ${package}.entity.${entityName};
+import ${package}.repository.I${entityName}Repository;
 import java.util.Optional;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;

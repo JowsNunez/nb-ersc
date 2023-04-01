@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package io.github.jowsnunez.Files;
 
 import java.io.BufferedReader;
@@ -9,18 +6,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.regex.Pattern;
-import org.openide.loaders.DataObject;
 import org.openide.util.Exceptions;
 
 /**
  *
- * @author el_fr
+ * @author JowsNunez
  */
 public abstract class AbstractWriter {
 
@@ -54,7 +49,7 @@ public abstract class AbstractWriter {
         doc = this.replace(Pattern.quote("${author}"), this.getFileManager().getAuthorName(), doc);
         doc = this.replace(Pattern.quote("${ID}"), this.getFileManager().getIdObjectType(), doc);
         doc = this.replace(Pattern.quote("${package}"), this.getFileManager().getPackageName(), doc);
-
+     
         try {
 
             if (!Files.exists(this.getPackagePath())) {

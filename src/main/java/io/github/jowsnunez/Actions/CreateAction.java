@@ -1,14 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package io.github.jowsnunez.Actions;
+
+package io.github.jowsnunez.actions;
 
 import io.github.jowsnunez.Files.ControllerWriter;
 import io.github.jowsnunez.Files.FileManager;
 import io.github.jowsnunez.Files.InterfaceServiceWriter;
 import io.github.jowsnunez.Files.RepositoryWriter;
 import io.github.jowsnunez.Files.ServiceWriter;
+import io.github.jowsnunez.exceptions.EntityException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -23,24 +21,25 @@ import org.openide.util.Exceptions;
 
 /**
  *
- * @author el_fr
+ * @author JowsNunez
  */
 public class CreateAction implements ActionListener {
-
+    
     private static final Logger LOGGER = Logger.getLogger("io.github.jowsnunez.CreateAction");
     private final DataObject context;
     private String ctxPath[];
     private FileManager fileManager;
-
+    
     public CreateAction(DataObject context) {
         this.context = context;
         this.fileManager = new FileManager();
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent ev) {
         getContext(context);
         this.ctxPath = this.context.getPrimaryFile().getPath().split("/(Entity|entity)/" + fileManager.getClassName() + ".java");
+        verifyEntity();
         this.fileManager.addWriters(new RepositoryWriter(ctxPath));
         this.fileManager.addWriters(new InterfaceServiceWriter(ctxPath));
         this.fileManager.addWriters(new ServiceWriter(ctxPath));
@@ -49,13 +48,13 @@ public class CreateAction implements ActionListener {
 
         // TODO use context
     }
-
+    
     private void getContext(DataObject context) {
-
+        
         String content;
-
+        
         try (InputStream f = context.getPrimaryFile().getInputStream(); BufferedReader bf = new BufferedReader(new InputStreamReader(f, "UTF-8"));) {
-
+            
             while ((content = bf.readLine()) != null) {
                 if (!fileManager.isIsFoundId()) {
                     String[] idObject = fileManager.findIdAttrName(content);
@@ -64,7 +63,7 @@ public class CreateAction implements ActionListener {
                         fileManager.setIdObjectName(idObject[1]);
                         fileManager.setIsFoundId(true);
                     }
-
+                    
                 }
                 if (!fileManager.isIsFoundClass()) {
                     String className = fileManager.findClassName(content);
@@ -72,34 +71,44 @@ public class CreateAction implements ActionListener {
                         fileManager.setClassName(className);
                         fileManager.setIsFoundClass(true);
                     }
-
+                    
                 }
                 if (!fileManager.isIsFoundAuthor()) {
-
+                    
                     String authorName = fileManager.findAuthorName(content);
                     if (authorName != null) {
                         fileManager.setAuthorName(authorName);
                         fileManager.setIsFoundAuthor(true);
                     }
-
+                    
                 }
                 if (!fileManager.isIsFoundPackage()) {
-
+                    
                     String[] packageName = fileManager.findPackageName(content);
                     if (packageName != null) {
                         fileManager.setPackageName(packageName[0]);
                         fileManager.setIsFoundPackage(true);
                     }
-
+                    
                 }
-
+                
             }
-
+            
         } catch (FileNotFoundException ex) {
             Exceptions.printStackTrace(ex);
         } catch (IOException ex) {
             Exceptions.printStackTrace(ex);
         }
     }
-
+    
+    private void verifyEntity() {
+        try {
+            if (ctxPath[0].endsWith("Entity")) {
+                throw new EntityException("Yo must define package with lower case \"entity\"", new Throwable("ss"));
+            }
+        } catch (EntityException ex) {
+            LOGGER.log(Level.SEVERE, ex.getMessage());
+        }
+    }
+    
 }

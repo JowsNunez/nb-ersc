@@ -186,7 +186,6 @@ public class FileManager {
     public void addWriters(AbstractWriter abstractWriter) {
         abstractWriter.setFileManager(this);
         this.makePaths(abstractWriter);
-        this.makePaths(abstractWriter);
         this.writers.add(abstractWriter);
     }
 

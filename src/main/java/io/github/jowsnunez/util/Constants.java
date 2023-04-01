@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package io.github.jowsnunez.util;
 
 /**
  *
- * @author el_fr
+ * @author JowsNunez
  */
 public class Constants {
     public static final String C_INT ="int";
@@ -23,6 +20,6 @@ public class Constants {
     public static final String C_NAME_ATTR="((id|iD|ID|Id)[A-Z_a-z]*);";
     public static final String C_ATTR_PATTERN = C_MOD_PATTERN + C_ANOT_PATTERN + C_PRIMOBJ_PATTERN + C_NAME_ATTR;
     public static final String C_AUTHOR_PATTERN = "(\\s*\\*\\s*@author\\s*([A-Za-z_?$#&()0-9]+)?\\s*)";
-    public static final String C_PACKAGE_PATTERN = "(\\s*package\\s+([a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)*)(\\.Entity;$))";
+    public static final String C_PACKAGE_PATTERN = "(\\s*package\\s+([a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)*)(\\.entity;$))";
     public static final String C_CLASS_PATTERN = "(\\s*public\\s+class\\s+([A-Z]*[a-z]*)\\s*\\{$)";
 }

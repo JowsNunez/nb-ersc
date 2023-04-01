@@ -1,8 +1,8 @@
 
 /** template created by jowsnunez --> https://www.github.com/JowsNunez **/
-package ${package}.Repository;
+package ${package}.repository;
 
-import ${package}.Entity.${entityName};
+import ${package}.entity.${entityName};
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/NetBeansModuleDevelopment-files/moduleInstall.java to edit this template
- */
+
 package io.github.jowsnunez.Actions;
 
 import org.openide.awt.StatusDisplayer;
 import org.openide.modules.ModuleInstall;
 import org.openide.util.RequestProcessor;
-
+/**
+ * 
+ * @author JowsNunez
+ */
 public class Installer extends ModuleInstall {
 
     @Override
