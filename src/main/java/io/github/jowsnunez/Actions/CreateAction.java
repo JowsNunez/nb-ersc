@@ -1,11 +1,11 @@
 
 package io.github.jowsnunez.actions;
 
-import io.github.jowsnunez.Files.ControllerWriter;
-import io.github.jowsnunez.Files.FileManager;
-import io.github.jowsnunez.Files.InterfaceServiceWriter;
-import io.github.jowsnunez.Files.RepositoryWriter;
-import io.github.jowsnunez.Files.ServiceWriter;
+import io.github.jowsnunez.files.ControllerWriter;
+import io.github.jowsnunez.files.FileManager;
+import io.github.jowsnunez.files.InterfaceServiceWriter;
+import io.github.jowsnunez.files.RepositoryWriter;
+import io.github.jowsnunez.files.ServiceWriter;
 import io.github.jowsnunez.exceptions.EntityException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -104,7 +104,7 @@ public class CreateAction implements ActionListener {
     private void verifyEntity() {
         try {
             if (ctxPath[0].endsWith("Entity")) {
-                throw new EntityException("Yo must define package with lower case \"entity\"", new Throwable("ss"));
+                throw new EntityException("You must define package with lower case \"entity\"", new Throwable("ss"));
             }
         } catch (EntityException ex) {
             LOGGER.log(Level.SEVERE, ex.getMessage());

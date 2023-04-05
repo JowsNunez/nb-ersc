@@ -29,8 +29,7 @@ public class Extractor {
     public String extractObjhAuthorName(String line) {
         String extract;
         Pattern pattern = Pattern.compile(Constants.C_AUTHOR_PATTERN);
-        Matcher matcher = pattern.matcher(line);
-        System.out.println(pattern);
+        Matcher matcher = pattern.matcher(line);       
         if (matcher.matches()) {
             extract = matcher.group(2);
             return extract;

@@ -1,4 +1,4 @@
-package io.github.jowsnunez.Files;
+package io.github.jowsnunez.files;
 
 import io.github.jowsnunez.util.Extractor;
 import java.util.List;
@@ -111,6 +111,10 @@ public class FileManager {
 
     public String getPackageName() {
         return packageName;
+    }
+
+    public String getClassNameLower() {
+        return className.substring(0, 1).toLowerCase() + className.substring(1);
     }
 
     public void setPackageName(String packageName) {

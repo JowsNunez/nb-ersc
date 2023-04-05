@@ -1,5 +1,4 @@
-
-package io.github.jowsnunez.Files;
+package io.github.jowsnunez.files;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,6 +9,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import org.openide.util.Exceptions;
 
@@ -24,6 +25,7 @@ public abstract class AbstractWriter {
     private Path packagePath;
     private Path filePath;
     private FileManager fileManager;
+    private static final Logger LOGGER = Logger.getLogger("io.github.jowsnunez.files");
 
     public AbstractWriter() {
 
@@ -44,19 +46,21 @@ public abstract class AbstractWriter {
 
     public void write() {
         String doc = this.getContent();
+    
+      
         doc = this.replace(Pattern.quote("${entityName}"), this.getFileManager().getClassName(), doc);
-        doc = this.replace(Pattern.quote("${entityNameLower}"), this.getFileManager().getClassName().toLowerCase(), doc);
+        doc = this.replace(Pattern.quote("${entityNameLower}"), this.getFileManager().getClassNameLower(), doc);
         doc = this.replace(Pattern.quote("${author}"), this.getFileManager().getAuthorName(), doc);
         doc = this.replace(Pattern.quote("${ID}"), this.getFileManager().getIdObjectType(), doc);
         doc = this.replace(Pattern.quote("${package}"), this.getFileManager().getPackageName(), doc);
-     
+
         try {
 
             if (!Files.exists(this.getPackagePath())) {
                 Files.createDirectory(this.getPackagePath());
             }
             Files.write(this.getFilePath(), doc.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE);
-
+            LOGGER.log(Level.INFO, "Write file  in {0} ", this.getFilePath().toString());
         } catch (IOException ex) {
 
         }
@@ -90,6 +94,8 @@ public abstract class AbstractWriter {
         template = template.replaceAll(prefix, value);
         return template;
     }
+    
+    
 
     public Path getPackagePath() {
         return packagePath;

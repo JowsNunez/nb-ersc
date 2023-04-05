@@ -1,5 +1,5 @@
 
-package io.github.jowsnunez.Actions;
+package io.github.jowsnunez.actions;
 
 import org.openide.awt.StatusDisplayer;
 import org.openide.modules.ModuleInstall;

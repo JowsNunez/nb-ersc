@@ -4,7 +4,7 @@
     <groupId>io.github.JowsNunez</groupId>
     <artifactId>NBERSC</artifactId>
     <name>nb-ersc</name>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <description>Create Repository, Service and Controller of Entity to SpringBoot</description>
     <url>https://github.com/JowsNunez/nb-ersc</url>
     <packaging>nbm</packaging>
@@ -116,6 +116,17 @@
         <url>http://github.com/JowsNunez/nb-ersc/tree/main</url>
     </scm>
      
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>5.9.2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.netbeans.api</groupId>
@@ -158,6 +169,11 @@
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-modules-projectapi</artifactId>
             <version>RELEASE120</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     

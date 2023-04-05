@@ -1,5 +1,5 @@
 
-package io.github.jowsnunez.Files;
+package io.github.jowsnunez.files;
 
 import java.io.InputStream;
 
