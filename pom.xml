@@ -4,7 +4,7 @@
     <groupId>io.github.JowsNunez</groupId>
     <artifactId>NBERSC</artifactId>
     <name>nb-ersc</name>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <description>Create Repository, Service and Controller of Entity to SpringBoot</description>
     <url>https://github.com/JowsNunez/nb-ersc</url>
     <packaging>nbm</packaging>
